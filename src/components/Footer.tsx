@@ -1,23 +1,44 @@
 import { Link } from 'react-router-dom';
+import { ArrowUp } from 'lucide-react';
+import logo from '@/assets/logo.jpeg';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const quickLinks = [
+    { name: 'About', path: '/about' },
+    { name: 'Practice Areas', path: '/practice-areas' },
+    { name: 'Team', path: '/team' },
+    { name: 'Contact', path: '/contact' },
+  ];
+
   return (
-    <footer className="bg-navy text-navy-foreground">
+    <footer className="bg-navy text-navy-foreground relative">
+      {/* Scroll to Top Button */}
+      <button
+        onClick={scrollToTop}
+        className="absolute -top-6 right-8 w-12 h-12 bg-accent text-accent-foreground rounded-full flex items-center justify-center shadow-elevated hover:opacity-90 transition-opacity duration-300"
+        aria-label="Scroll to top"
+      >
+        <ArrowUp size={20} />
+      </button>
+
       <div className="container-wide section-padding">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Firm Info */}
           <div className="lg:col-span-2">
-            <div className="flex flex-col mb-6">
-              <span className="font-serif text-2xl font-medium tracking-heading">
-                Anil Anand
-              </span>
-              <span className="text-sm tracking-widest uppercase opacity-70">
-                & Associates
-              </span>
-            </div>
+            <Link to="/" onClick={scrollToTop} className="inline-block mb-6">
+              <img 
+                src={logo} 
+                alt="Anil Anand & Associates" 
+                className="h-20 w-auto object-contain"
+              />
+            </Link>
             <p className="text-sm leading-elegant opacity-70 max-w-md">
               A distinguished law practice committed to providing comprehensive legal 
               services with the highest standards of professionalism and integrity.
@@ -28,13 +49,14 @@ const Footer = () => {
           <div>
             <h4 className="font-serif text-lg mb-6">Quick Links</h4>
             <ul className="space-y-3">
-              {['About', 'Practice Areas', 'Team', 'Contact'].map((link) => (
-                <li key={link}>
+              {quickLinks.map((link) => (
+                <li key={link.name}>
                   <Link
-                    to={`/${link.toLowerCase().replace(' ', '-')}`}
+                    to={link.path}
+                    onClick={scrollToTop}
                     className="text-sm opacity-70 hover:opacity-100 transition-opacity duration-300"
                   >
-                    {link}
+                    {link.name}
                   </Link>
                 </li>
               ))}
@@ -58,13 +80,25 @@ const Footer = () => {
         {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-wrap justify-center gap-6 text-xs uppercase tracking-wider">
-            <Link to="/disclaimer" className="opacity-60 hover:opacity-100 transition-opacity duration-300">
+            <Link 
+              to="/disclaimer" 
+              onClick={scrollToTop}
+              className="opacity-60 hover:opacity-100 transition-opacity duration-300"
+            >
               Disclaimer
             </Link>
-            <Link to="/privacy-policy" className="opacity-60 hover:opacity-100 transition-opacity duration-300">
+            <Link 
+              to="/privacy-policy" 
+              onClick={scrollToTop}
+              className="opacity-60 hover:opacity-100 transition-opacity duration-300"
+            >
               Privacy Policy
             </Link>
-            <Link to="/terms-of-use" className="opacity-60 hover:opacity-100 transition-opacity duration-300">
+            <Link 
+              to="/terms-of-use" 
+              onClick={scrollToTop}
+              className="opacity-60 hover:opacity-100 transition-opacity duration-300"
+            >
               Terms of Use
             </Link>
           </div>
