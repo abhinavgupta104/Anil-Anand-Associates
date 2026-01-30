@@ -151,8 +151,17 @@ const Contact = () => {
                 </div>
 
                 {/* Map Placeholder */}
-                <div className="mt-8 aspect-video bg-secondary rounded-sm flex items-center justify-center">
-                  <p className="text-muted-foreground text-sm">Map Location</p>
+                <div className="mt-8 aspect-video bg-secondary rounded-sm overflow-hidden border border-border">
+                  <iframe 
+                    src="https://maps.google.com/maps?q=28.6750028,77.4501523&z=15&output=embed"
+                    width="100%" 
+                    height="100%" 
+                    style={{ border: 0 }} 
+                    allowFullScreen 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Office Location"
+                  />
                 </div>
               </div>
             </AnimatedSection>
