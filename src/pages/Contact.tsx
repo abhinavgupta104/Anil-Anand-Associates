@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Layout from '@/components/Layout';
 import { AnimatedSection } from '@/components/AnimatedSection';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -21,12 +21,47 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-    }, 1500);
+    
+    // Replace with your actual WhatsApp number (include country code, e.g., 91 for India)
+    const whatsappNumber = "917800966576"; 
+    
+    const subjectMap: Record<string, string> = {
+      '': '❓ Not Specified',
+      general: '💡 General Inquiry',
+      corporate: '🏢 Corporate & Commercial',
+      civil: '⚖️ Civil Litigation',
+      criminal: '🚔 Criminal Matters',
+      family: '👨‍👩‍👧‍👦 Family Law',
+      other: '🔖 Other'
+    };
+    const subjectLabel = subjectMap[formData.subject] || formData.subject;
+    
+    const message = `⚖️ *LEGAL ENQUIRY RECEIVED*
+────────────────────
+📅 *Date:* ${new Date().toLocaleDateString()}
+⏰ *Time:* ${new Date().toLocaleTimeString()}
+────────────────────
+
+👤 *CLIENT INFORMATION*
+• *Name:* ${formData.name}
+• *Contact:* ${formData.phone}
+• *Email:* ${formData.email}
+
+ *CASE DETAILS*
+• *Category:* ${subjectLabel}
+
+💬 *MESSAGE*
+"${formData.message}"
+
+────────────────────
+🔗 *Source:* Official Website`;
+
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
   };
 
   return (
@@ -83,7 +118,7 @@ const Contact = () => {
                     <div>
                       <h3 className="font-medium mb-1">Phone</h3>
                       <p className="text-muted-foreground text-sm">
-                        +91 11 XXXX XXXX
+                        +91 78009 66576
                       </p>
                     </div>
                   </div>
@@ -225,9 +260,14 @@ const Contact = () => {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="btn-primary rounded-sm w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="btn-primary rounded-sm w-full disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 group"
                     >
-                      {isSubmitting ? 'Sending...' : 'Submit Inquiry'}
+                      {isSubmitting ? 'Sending...' : (
+                        <>
+                          Send Message
+                          <Send size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+                        </>
+                      )}
                     </button>
 
                     <p className="text-xs text-muted-foreground text-center">

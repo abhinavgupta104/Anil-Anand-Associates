@@ -38,6 +38,18 @@ const practiceAreas = [
     title: 'Arbitration & Mediation',
     description: 'Alternative dispute resolution services including domestic and international arbitration, mediation, and conciliation. We assist clients in efficient resolution of disputes outside traditional courts.',
   },
+  {
+    title: 'Constitutional Law',
+    description: 'Expert representation in Writ Petitions, PILs, and other constitutional remedies before the High Courts and Supreme Court. We advocate for the protection of fundamental rights and challenge arbitrary administrative actions.',
+  },
+  {
+    title: 'Property & Real Estate Law',
+    description: 'End-to-end legal support for property disputes, title suits, partition matters, and real estate transactions. We assist in due diligence, documentation, and litigation regarding immovable property.',
+  },
+  {
+    title: 'Consumer Protection',
+    description: 'Representing clients in consumer disputes regarding deficiency of services and unfair trade practices. We handle matters before District, State, and National Consumer Disputes Redressal Commissions.',
+  },
 ];
 
 const PracticeAreas = () => {

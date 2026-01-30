@@ -4,6 +4,8 @@ import Layout from '@/components/Layout';
 import PracticeAreaCard from '@/components/PracticeAreaCard';
 import { AnimatedSection } from '@/components/AnimatedSection';
 import { ArrowRight } from 'lucide-react';
+import anilAnandPhoto from '@/assets/anil anand.jpeg';
+import logo from '@/assets/logo.jpeg';
 
 const practiceAreas = [
   {
@@ -22,11 +24,42 @@ const practiceAreas = [
     title: 'Cheque Bounce Matters',
     description: 'Specialized handling of NI Act cases with comprehensive enforcement strategies.',
   },
+  {
+    title: 'Property & Real Estate Law',
+    description: 'End-to-end legal support for property disputes, title suits, and real estate transactions.',
+  },
+  {
+    title: 'Constitutional Law',
+    description: 'Expert representation in Writ Petitions and constitutional remedies before High Courts.',
+  },
 ];
 
 const Index = () => {
   return (
     <Layout>
+      {/* Firm Introduction */}
+      <section className="section-padding bg-secondary/30">
+        <div className="container-narrow text-center">
+          <AnimatedSection>
+            <img 
+              src={logo} 
+              alt="Anil Anand & Associates Logo" 
+              className="h-32 md:h-40 w-auto mx-auto mb-8 mix-blend-multiply"
+            />
+            <div className="divider-gold mx-auto mb-8" />
+            <h2 className="font-serif text-3xl md:text-4xl tracking-heading mb-6">
+              Anil Anand & Associates
+            </h2>
+            <p className="text-muted-foreground leading-elegant max-w-2xl mx-auto">
+              Established with a vision to provide comprehensive legal services, our firm 
+              has been at the forefront of legal practice since 1995. We combine deep 
+              legal expertise with a client-centric approach, ensuring that every matter 
+              receives the attention and dedication it deserves.
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* Hero Section */}
       <section className="min-h-[85vh] flex items-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-secondary/50 via-background to-background" />
@@ -73,24 +106,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Firm Introduction */}
-      <section className="section-padding bg-secondary/30">
-        <div className="container-narrow text-center">
-          <AnimatedSection>
-            <div className="divider-gold mx-auto mb-8" />
-            <h2 className="font-serif text-3xl md:text-4xl tracking-heading mb-6">
-              Anil Anand & Associates
-            </h2>
-            <p className="text-muted-foreground leading-elegant max-w-2xl mx-auto">
-              Established with a vision to provide comprehensive legal services, our firm 
-              has been at the forefront of legal practice since 1995. We combine deep 
-              legal expertise with a client-centric approach, ensuring that every matter 
-              receives the attention and dedication it deserves.
-            </p>
-          </AnimatedSection>
-        </div>
-      </section>
-
       {/* Practice Areas Overview */}
       <section className="section-padding">
         <div className="container-wide">
@@ -104,7 +119,7 @@ const Index = () => {
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {practiceAreas.map((area, index) => (
               <PracticeAreaCard
                 key={area.title}
@@ -133,11 +148,11 @@ const Index = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <AnimatedSection>
               <div className="aspect-[4/5] max-w-md mx-auto lg:mx-0 bg-navy-foreground/5 rounded-sm flex items-end justify-center overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-b from-navy-foreground/5 to-navy-foreground/10 flex items-center justify-center">
-                  <div className="w-32 h-32 rounded-full bg-navy-foreground/10 flex items-center justify-center">
-                    <span className="font-serif text-5xl text-navy-foreground/30">A</span>
-                  </div>
-                </div>
+                <img 
+                  src={anilAnandPhoto} 
+                  alt="Anil Anand" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </AnimatedSection>
             <AnimatedSection delay={0.2}>

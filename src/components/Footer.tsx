@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowUp } from 'lucide-react';
-import logo from '@/assets/logo.jpeg';
+import logo from '@/assets/logyo.jpeg';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -69,7 +69,7 @@ const Footer = () => {
             <ul className="space-y-3 text-sm opacity-70">
               <li>New Delhi, India</li>
               <li>contact@anilanand.law</li>
-              <li>+91 11 XXXX XXXX</li>
+              <li>+91 78009 66576</li>
             </ul>
           </div>
         </div>

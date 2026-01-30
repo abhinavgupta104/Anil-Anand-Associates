@@ -1,6 +1,11 @@
 import Layout from '@/components/Layout';
 import TeamMemberCard from '@/components/TeamMemberCard';
 import { AnimatedSection } from '@/components/AnimatedSection';
+import anilAnandPhoto from '@/assets/anil anand.jpeg';
+import hariPrasadRaoPhoto from '@/assets/hari prasad rao.jpeg';
+import kartikeyaSharmaPhoto from '@/assets/kartikey sharma.jpeg';
+import dPSharmaPhoto from '@/assets/D P sharma.jpeg';
+import rajeevAnandPhoto from '@/assets/rajeev anand.jpeg';
 
 const teamMembers = [
   {
@@ -9,34 +14,48 @@ const teamMembers = [
     experience: 'Practicing since November 1995',
     areas: ['Civil', 'Criminal', 'Corporate', 'IPR', 'Matrimonial', 'Cheque Bounce', 'Recovery Matters'],
     enrollmentNumber: 'D/XXX/1995',
+    education: 'LL.B., University of Delhi',
+    bio: 'Founder with over three decades of experience in comprehensive legal practice.',
   },
   {
     name: 'D. P. Sharma',
     designation: 'Senior Advocate',
     experience: '45+ years of distinguished practice',
     areas: ['Civil Litigation', 'Constitutional Law', 'Property Disputes'],
-    enrollmentNumber: 'D/XXX/1979',
+    enrollmentNumber: 'UP695/1980',
+    education: 'LL.B., University of Delhi',
+    bio: 'A veteran legal practitioner with extensive experience in constitutional matters and complex civil disputes across High Courts.',
+    image: dPSharmaPhoto,
   },
   {
     name: 'Rajeev Anand',
     designation: 'Advocate',
     experience: 'Specializing in Criminal Law',
     areas: ['Criminal Defence', 'Economic Offences', 'Bail Matters'],
-    enrollmentNumber: 'D/XXX/2005',
+    enrollmentNumber: 'UP10754/2000',
+    education: 'LL.B., Campus Law Centre',
+    bio: 'Focused on criminal defense strategies with a strong track record in bail matters and economic offence litigations.',
+    image: rajeevAnandPhoto,
   },
   {
     name: 'Kartikeya Sharma',
     designation: 'Advocate',
     experience: 'Corporate and Technology Law specialist',
     areas: ['Corporate Law', 'Cyber Crime', 'Intellectual Property Rights'],
-    enrollmentNumber: 'D/XXX/2015',
+    enrollmentNumber: 'D/11800/2022',
+    education: 'B.A. LL.B. (Hons), LL.M.',
+    bio: 'Advises on corporate governance, intellectual property rights, and cyber law compliance for modern businesses.',
+    image: kartikeyaSharmaPhoto,
   },
   {
     name: 'Hari Prasad Rao',
     designation: 'Advocate',
     experience: 'Experienced litigation counsel',
     areas: ['Civil Litigation', 'Commercial Disputes', 'Arbitration'],
-    enrollmentNumber: 'D/XXX/2010',
+    enrollmentNumber: 'D/1576/2011',
+    education: 'LL.B., Osmania University',
+    bio: 'Expertise in commercial arbitration and civil litigation, handling diverse disputes with a solution-oriented approach.',
+    image: hariPrasadRaoPhoto,
   },
 ];
 
@@ -65,11 +84,11 @@ const Team = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <AnimatedSection>
               <div className="aspect-[4/5] max-w-md mx-auto lg:mx-0 bg-secondary rounded-sm flex items-center justify-center overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-b from-secondary to-muted flex items-center justify-center">
-                  <div className="w-32 h-32 rounded-full bg-muted-foreground/10 flex items-center justify-center">
-                    <span className="font-serif text-5xl text-muted-foreground/40">A</span>
-                  </div>
-                </div>
+                <img 
+                  src={anilAnandPhoto} 
+                  alt="Anil Anand" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </AnimatedSection>
             <AnimatedSection delay={0.2}>
@@ -125,6 +144,9 @@ const Team = () => {
                 areas={member.areas}
                 enrollmentNumber={member.enrollmentNumber}
                 index={index}
+                image={member.image}
+                education={member.education}
+                bio={member.bio}
               />
             ))}
           </div>

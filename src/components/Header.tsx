@@ -14,7 +14,16 @@ const navLinks = [
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Scroll to top on route change
   useEffect(() => {
@@ -22,33 +31,58 @@ const Header = () => {
   }, [location.pathname]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border">
-      <div className="container-wide">
-        <div className="flex items-center justify-between h-20 md:h-24">
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-background/95 backdrop-blur-md shadow-sm h-16 md:h-20 border-b border-border/50' 
+          : 'bg-background/80 backdrop-blur-sm h-20 md:h-24 border-b border-transparent'
+      }`}
+    >
+      <div className="container-wide h-full">
+        <div className="flex items-center justify-between h-full">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img 
               src={logo} 
               alt="Anil Anand & Associates" 
-              className="h-14 md:h-16 w-auto object-contain"
+              className={`w-auto object-contain transition-all duration-300 ${
+                isScrolled ? 'h-10 md:h-12' : 'h-14 md:h-16'
+              }`}
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-10">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`link-underline text-sm tracking-wide transition-colors duration-300 ${
-                  location.pathname === link.path
-                    ? 'text-foreground'
-                    : 'text-muted-foreground hover:text-foreground'
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
+          <nav className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => {
+              const isActive = location.pathname === link.path;
+              
+              if (link.name === 'Contact') {
+                return (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className="ml-4 btn-primary px-6 py-2.5 rounded-sm text-sm font-medium transition-transform hover:scale-105"
+                  >
+                    {link.name}
+                  </Link>
+                );
+              }
+
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`relative text-sm font-medium tracking-wide transition-colors duration-300 group ${
+                    isActive ? 'text-accent' : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  {link.name}
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-accent transition-all duration-300 ${
+                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`} />
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Mobile Menu Button */}
