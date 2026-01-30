@@ -153,7 +153,7 @@ const Contact = () => {
                 {/* Map Placeholder */}
                 <div className="mt-8 aspect-video bg-secondary rounded-sm overflow-hidden border border-border">
                   <iframe 
-                    src="https://www.google.com/maps?q=28.6750028,77.4501523&z=15&output=embed"
+                    src="https://maps.google.com/maps?q=28.6750028,77.4501523&z=15&output=embed"
                     width="100%" 
                     height="100%" 
                     style={{ border: 0 }} 

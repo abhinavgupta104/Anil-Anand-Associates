@@ -7,16 +7,14 @@ const DisclaimerModal = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const hasAccepted = typeof window !== 'undefined' ? sessionStorage.getItem(DISCLAIMER_ACCEPTED_KEY) : null;
+    const hasAccepted = sessionStorage.getItem(DISCLAIMER_ACCEPTED_KEY);
     if (!hasAccepted) {
       setIsOpen(true);
     }
   }, []);
 
   const handleAccept = () => {
-    if (typeof window !== 'undefined') {
-      sessionStorage.setItem(DISCLAIMER_ACCEPTED_KEY, 'true');
-    }
+    sessionStorage.setItem(DISCLAIMER_ACCEPTED_KEY, 'true');
     setIsOpen(false);
   };
 
