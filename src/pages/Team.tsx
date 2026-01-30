@@ -50,11 +50,11 @@ const teamMembers = [
   {
     name: 'Hari Prasad Rao',
     designation: 'Advocate',
-    experience: 'Experienced litigation counsel',
-    areas: ['Civil Litigation', 'Commercial Disputes', 'Arbitration'],
+    experience: '14+ years of experience',
+    areas: ['Civil', 'Criminal', 'Commercial Disputes', 'Arbitration'],
     enrollmentNumber: 'D/1576/2011',
     education: 'LL.B., Osmania University',
-    bio: 'Expertise in commercial arbitration and civil litigation, handling diverse disputes with a solution-oriented approach.',
+    bio: 'Expertise in civil and criminal litigation, managing complex disputes with strategic and solution-oriented advocacy.',
     image: hariPrasadRaoPhoto,
   },
 ];

@@ -23,7 +23,7 @@ const Contact = () => {
     setIsSubmitting(true);
     
     // Replace with your actual WhatsApp number (include country code, e.g., 91 for India)
-    const whatsappNumber = "917800966576"; 
+    const whatsappNumber = "919873785477"; 
     
     const subjectMap: Record<string, string> = {
       '': '❓ Not Specified',
@@ -104,9 +104,10 @@ const Contact = () => {
                     <div>
                       <h3 className="font-medium mb-1">Address</h3>
                       <p className="text-muted-foreground text-sm leading-relaxed">
-                        Chamber No. XXX, Lawyers Chambers<br />
-                        District Courts Complex<br />
-                        New Delhi - 110001, India
+                        Chamber No. 2, Ground Floor<br />
+                        District Court Complex, RDC<br />
+                        Rajnagar, Ghaziabad<br />
+                        Uttar Pradesh – 201002, India
                       </p>
                     </div>
                   </div>
@@ -118,7 +119,7 @@ const Contact = () => {
                     <div>
                       <h3 className="font-medium mb-1">Phone</h3>
                       <p className="text-muted-foreground text-sm">
-                        +91 78009 66576
+                        +91 9873785477
                       </p>
                     </div>
                   </div>
@@ -130,7 +131,7 @@ const Contact = () => {
                     <div>
                       <h3 className="font-medium mb-1">Email</h3>
                       <p className="text-muted-foreground text-sm">
-                        contact@anilanand.law
+                        anilanand2008@yahoo.com
                       </p>
                     </div>
                   </div>

@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const DISCLAIMER_ACCEPTED_KEY = 'anil_anand_disclaimer_accepted';
+const DISCLAIMER_ACCEPTED_KEY = 'anil_anand_disclaimer_session_v2';
 
 const DisclaimerModal = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const hasAccepted = localStorage.getItem(DISCLAIMER_ACCEPTED_KEY);
+    const hasAccepted = sessionStorage.getItem(DISCLAIMER_ACCEPTED_KEY);
     if (!hasAccepted) {
       setIsOpen(true);
     }
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem(DISCLAIMER_ACCEPTED_KEY, 'true');
+    sessionStorage.setItem(DISCLAIMER_ACCEPTED_KEY, 'true');
     setIsOpen(false);
   };
 
@@ -30,7 +30,7 @@ const DisclaimerModal = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-modal"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 backdrop-blur-sm bg-black/60"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.98, y: 10 }}

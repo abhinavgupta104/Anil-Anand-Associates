@@ -67,9 +67,9 @@ const Footer = () => {
           <div>
             <h4 className="font-serif text-lg mb-6">Contact</h4>
             <ul className="space-y-3 text-sm opacity-70">
-              <li>New Delhi, India</li>
-              <li>contact@anilanand.law</li>
-              <li>+91 78009 66576</li>
+              <li>Chamber No. 2, Ground Floor, District Court Complex, RDC Rajnagar, Ghaziabad Uttar Pradesh – 201002, India</li>
+              <li>anilanand2008@yahoo.com</li>
+              <li>+91 9873785477</li>
             </ul>
           </div>
         </div>

@@ -12,6 +12,7 @@ import Disclaimer from "./pages/Disclaimer";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfUse from "./pages/TermsOfUse";
 import NotFound from "./pages/NotFound";
+import DisclaimerModal from "@/components/DisclaimerModal";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <DisclaimerModal />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
