@@ -79,16 +79,6 @@ const TeamMemberCard = ({
             </p>
           )}
           
-          {enrollmentNumber && (
-            <p className="text-xs text-muted-foreground mt-3 pt-3 border-t border-border">
-              {education && (
-                <span className="block mb-1 text-foreground/80">
-                  {education}
-                </span>
-              )}
-              Enrollment: {enrollmentNumber}
-            </p>
-          )}
         </div>
       </div>
     </motion.div>

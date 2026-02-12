@@ -2,10 +2,15 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Layout from '@/components/Layout';
 import PracticeAreaCard from '@/components/PracticeAreaCard';
+import TeamMemberCard from '@/components/TeamMemberCard';
 import { AnimatedSection } from '@/components/AnimatedSection';
 import { ArrowRight } from 'lucide-react';
 import anilAnandPhoto from '@/assets/anil anand.jpeg';
 import logo from '@/assets/logo.jpeg';
+import hariPrasadRaoPhoto from '@/assets/hari prasad rao.jpeg';
+import kartikeyaSharmaPhoto from '@/assets/kartikey sharma.jpeg';
+import dPSharmaPhoto from '@/assets/D P sharma.jpeg';
+import rajeevAnandPhoto from '@/assets/rajeev anand.jpeg';
 
 const practiceAreas = [
   {
@@ -31,6 +36,49 @@ const practiceAreas = [
   {
     title: 'Constitutional Law',
     description: 'Expert representation in Writ Petitions and constitutional remedies before High Courts.',
+  },
+];
+
+const teamMembers = [
+  {
+    name: 'D. P. Sharma',
+    designation: 'Senior Advocate',
+    experience: '45+ years of distinguished practice',
+    areas: ['Civil Litigation', 'Constitutional Law', 'Property Disputes'],
+    enrollmentNumber: 'UP695/1980',
+    education: 'LL.B., University of Delhi',
+    bio: 'A veteran legal practitioner with extensive experience in constitutional matters and complex civil disputes across High Courts.',
+    image: dPSharmaPhoto,
+  },
+  {
+    name: 'Rajeev Anand',
+    designation: 'Advocate',
+    experience: 'Specializing in Criminal Law',
+    areas: ['Criminal Defence', 'Economic Offences', 'Bail Matters'],
+    enrollmentNumber: 'UP10754/2000',
+    education: 'LL.B., Campus Law Centre',
+    bio: 'Focused on criminal defense strategies with a strong track record in bail matters and economic offence litigations.',
+    image: rajeevAnandPhoto,
+  },
+  {
+    name: 'Hari Prasad Rao',
+    designation: 'Advocate',
+    experience: '14+ years of experience',
+    areas: ['Civil', 'Criminal', 'Commercial Disputes', 'Arbitration'],
+    enrollmentNumber: 'D/1576/2011',
+    education: 'LL.B., Osmania University',
+    bio: 'Expertise in civil and criminal litigation, managing complex disputes with strategic and solution-oriented advocacy.',
+    image: hariPrasadRaoPhoto,
+  },
+  {
+    name: 'Kartikeya Sharma',
+    designation: 'Advocate',
+    experience: 'Corporate and cyber law',
+    areas: ['Corporate Law', 'Cyber Crime', 'Intellectual Property Rights'],
+    enrollmentNumber: 'D/11800/2022',
+    education: 'B.A. LL.B. (Hons), LL.M.',
+    bio: 'Advises on corporate governance, intellectual property rights, and cyber law compliance for modern businesses.',
+    image: kartikeyaSharmaPhoto,
   },
 ];
 
@@ -163,20 +211,45 @@ const Index = () => {
               <p className="text-accent text-lg mb-6">
                 Founder & Managing Partner
               </p>
-              <p className="leading-elegant opacity-80 mb-6">
+              <p className="leading-elegant opacity-80">
                 With over three decades of distinguished legal practice since November 1995, 
                 Anil Anand has built a reputation for excellence across civil, criminal, 
                 corporate, and intellectual property matters. His approach combines deep 
                 legal knowledge with pragmatic solutions.
               </p>
-              <Link 
-                to="/team" 
-                className="inline-flex items-center gap-2 text-accent hover:opacity-80 transition-opacity"
-              >
-                Meet the Team
-                <ArrowRight size={14} />
-              </Link>
             </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      {/* Associates Section */}
+      <section id="team" className="section-padding bg-secondary/30">
+        <div className="container-wide">
+          <AnimatedSection className="text-center mb-16">
+            <div className="divider-gold mx-auto mb-8" />
+            <h2 className="font-serif text-3xl md:text-4xl tracking-heading mb-4">
+              Our Associates
+            </h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              A team of distinguished legal professionals committed to delivering exceptional legal services
+            </p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {teamMembers.map((member, index) => (
+              <TeamMemberCard
+                key={member.name}
+                name={member.name}
+                designation={member.designation}
+                experience={member.experience}
+                areas={member.areas}
+                enrollmentNumber={member.enrollmentNumber}
+                index={index}
+                image={member.image}
+                education={member.education}
+                bio={member.bio}
+              />
+            ))}
           </div>
         </div>
       </section>

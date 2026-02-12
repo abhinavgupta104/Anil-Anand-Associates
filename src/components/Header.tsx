@@ -8,7 +8,7 @@ const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
   { name: 'Practice Areas', path: '/practice-areas' },
-  { name: 'Team', path: '/team' },
+  { name: 'Team', path: '/#team' },
   { name: 'Contact', path: '/contact' },
 ];
 
@@ -29,6 +29,32 @@ const Header = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location.pathname]);
+
+  // Handle hash navigation for same page
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.substring(1);
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+  }, [location.hash]);
+
+  const handleNavClick = (path: string) => {
+    if (path.includes('/#')) {
+      setIsMenuOpen(false);
+      const id = path.split('#')[1];
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+  };
 
   return (
     <header 
@@ -65,6 +91,24 @@ const Header = () => {
                   >
                     {link.name}
                   </Link>
+                );
+              }
+
+              // Handle Team link with hash
+              if (link.path.includes('#')) {
+                return (
+                  <button
+                    key={link.path}
+                    onClick={() => handleNavClick(link.path)}
+                    className={`relative text-sm font-medium tracking-wide transition-colors duration-300 group ${
+                      isActive ? 'text-accent' : 'text-muted-foreground hover:text-foreground'
+                    }`}
+                  >
+                    {link.name}
+                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-accent transition-all duration-300 ${
+                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`} />
+                  </button>
                 );
               }
 
@@ -114,17 +158,32 @@ const Header = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
                 >
-                  <Link
-                    to={link.path}
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`block py-2 text-base tracking-wide transition-colors duration-300 ${
-                      location.pathname === link.path
-                        ? 'text-foreground'
-                        : 'text-muted-foreground hover:text-foreground'
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
+                  {link.path.includes('#') ? (
+                    <button
+                      onClick={() => {
+                        handleNavClick(link.path);
+                      }}
+                      className={`block py-2 text-base tracking-wide transition-colors duration-300 ${
+                        location.pathname === link.path
+                          ? 'text-foreground'
+                          : 'text-muted-foreground hover:text-foreground'
+                      }`}
+                    >
+                      {link.name}
+                    </button>
+                  ) : (
+                    <Link
+                      to={link.path}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`block py-2 text-base tracking-wide transition-colors duration-300 ${
+                        location.pathname === link.path
+                          ? 'text-foreground'
+                          : 'text-muted-foreground hover:text-foreground'
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  )}
                 </motion.div>
               ))}
             </nav>
